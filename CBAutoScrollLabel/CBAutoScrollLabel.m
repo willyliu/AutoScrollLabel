@@ -347,6 +347,12 @@ static void each_object(NSArray *objects, void (^block)(id object)) {
     [self applyGradientMaskForFadeLength:self.fadeLength enableFade:self.scrolling];
 }
 
+// make sure the label will scroll. ref: https://github.com/cbess/AutoScrollLabel/issues/50
+- (void)didMoveToWindow {
+	[super didMoveToWindow];
+	[self scrollLabelIfNeeded];
+}
+
 #pragma mark - Gradient
 
 // ref: https://github.com/cbpowell/MarqueeLabel
